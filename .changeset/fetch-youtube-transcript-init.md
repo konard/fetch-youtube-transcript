@@ -1,5 +1,5 @@
 ---
-"fetch-youtube-transcript": minor
+'fetch-youtube-transcript': minor
 ---
 
 Initialize `fetch-youtube-transcript` as a globally installable CLI tool that fetches YouTube video transcripts and saves them as markdown files.
