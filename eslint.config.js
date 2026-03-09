@@ -23,9 +23,12 @@ export default [
         // Node.js 18+ globals
         fetch: 'readonly',
         AbortController: 'readonly',
+        URL: 'readonly',
         // Runtime-specific globals
         Bun: 'readonly',
         Deno: 'readonly',
+        // Browser globals (used inside page.evaluate() callbacks)
+        document: 'readonly',
       },
     },
     rules: {
