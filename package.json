@@ -1,6 +1,6 @@
 {
   "name": "fetch-youtube-transcript",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "A globally installable CLI tool to fetch YouTube video transcripts and save them as markdown",
   "type": "module",
   "main": "src/index.js",
