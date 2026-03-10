@@ -1,31 +1,52 @@
-# js-ai-driven-development-pipeline-template
+# fetch-youtube-transcript
 
-A comprehensive template for AI-driven JavaScript/TypeScript development with full CI/CD pipeline support.
+A globally installable CLI tool to fetch YouTube video transcripts and save them as markdown files.
+
+Uses [browser-commander](https://github.com/link-foundation/browser-commander) for browser automation with Playwright and [lino-arguments](https://github.com/link-foundation/lino-arguments) for argument parsing.
 
 ## Features
 
-- **Multi-runtime support**: Works with Bun, Node.js, and Deno
-- **Universal testing**: Uses [test-anywhere](https://github.com/link-foundation/test-anywhere) for cross-runtime tests
-- **Automated releases**: Changesets-based versioning with GitHub Actions
-- **Code quality**: ESLint + Prettier with pre-commit hooks via Husky
-- **Package manager agnostic**: Works with bun, npm, yarn, pnpm, and deno
-- **Broken link checks**: Automated link validation with [lychee](https://github.com/lycheeverse/lychee-action) and Web Archive fallback suggestions
+- Fetch transcripts from any YouTube video with a transcript
+- Supports full URLs (`https://www.youtube.com/watch?v=...`) and short URLs (`https://youtu.be/...`)
+- Saves transcripts as formatted Markdown files
+- Persistent browser session — log in to YouTube once, reuse session forever
+- Custom output file name via `--output` flag
+- Verbose logging via `--verbose` flag
 
-## Quick Start
+## Installation
 
-### Using This Template
+```bash
+npm install -g fetch-youtube-transcript
+npx playwright install chromium
+```
 
-1. Click "Use this template" on GitHub to create a new repository
-2. Clone your new repository
-3. Update `package.json` with your package name and description
-4. Update the `PACKAGE_NAME` constant in these scripts:
-   - `scripts/validate-changeset.mjs`
-   - `scripts/merge-changesets.mjs`
-   - `scripts/publish-to-npm.mjs`
-   - `scripts/format-release-notes.mjs`
-   - `scripts/create-manual-changeset.mjs`
-5. Install dependencies: `bun install`
-6. Start developing!
+## Usage
+
+```bash
+fetch-youtube-transcript <youtube-url> [--output filename.md] [--verbose]
+```
+
+### Examples
+
+```bash
+# Fetch transcript from a YouTube video (saves to <video-id>.md)
+fetch-youtube-transcript https://youtu.be/uzkc-qNVoOk
+
+# Fetch with full URL
+fetch-youtube-transcript "https://www.youtube.com/watch?v=uzkc-qNVoOk"
+
+# Specify output file
+fetch-youtube-transcript https://youtu.be/uzkc-qNVoOk --output my-transcript.md
+
+# Enable verbose logging
+fetch-youtube-transcript https://youtu.be/uzkc-qNVoOk --verbose
+```
+
+### First Run
+
+On first run, the browser will open and navigate to the YouTube login page. Log in to your Google account manually. The session is saved to `~/.yt-session/` so you only need to log in once.
+
+## Quick Start for Development
 
 ### Development
 

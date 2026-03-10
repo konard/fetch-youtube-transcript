@@ -1,27 +1,48 @@
 /**
- * Example module type definitions
- * Replace this with your actual type definitions
+ * fetch-youtube-transcript type definitions
  */
 
 /**
- * Adds two numbers
- * @param a - First number
- * @param b - Second number
- * @returns Sum of a and b
+ * A transcript segment with timestamp and text
  */
-export declare const add: (a: number, b: number) => number;
+export interface TranscriptSegment {
+  time: string;
+  text: string;
+}
 
 /**
- * Multiplies two numbers
- * @param a - First number
- * @param b - Second number
- * @returns Product of a and b
+ * Result of normalizeYoutubeUrl
  */
-export declare const multiply: (a: number, b: number) => number;
+export interface NormalizedYoutubeUrl {
+  videoUrl: string;
+  videoId: string | null;
+}
 
 /**
- * Delays execution for specified milliseconds
- * @param ms - Milliseconds to wait
- * @returns Promise that resolves after the delay
+ * Options for buildMarkdownTranscript
  */
-export declare const delay: (ms: number) => Promise<void>;
+export interface BuildMarkdownTranscriptOptions {
+  pageTitle: string;
+  videoUrl: string;
+  duration?: string;
+  segments: TranscriptSegment[];
+}
+
+/**
+ * Normalize a YouTube URL to a standard watch URL and extract the video ID.
+ * Supports both full URLs (youtube.com/watch?v=...) and short URLs (youtu.be/...).
+ *
+ * @param url - YouTube video URL
+ * @returns Normalized URL and video ID
+ */
+export declare function normalizeYoutubeUrl(url: string): NormalizedYoutubeUrl;
+
+/**
+ * Build a markdown transcript from a list of transcript segments.
+ *
+ * @param options - Options
+ * @returns Markdown formatted transcript
+ */
+export declare function buildMarkdownTranscript(
+  options: BuildMarkdownTranscriptOptions
+): string;

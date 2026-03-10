@@ -1,10 +1,13 @@
 {
-  "name": "my-package",
+  "name": "fetch-youtube-transcript",
   "version": "0.6.0",
-  "description": "A JavaScript/TypeScript package template for AI-driven development",
+  "description": "A globally installable CLI tool to fetch YouTube video transcripts and save them as markdown",
   "type": "module",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "bin": {
+    "fetch-youtube-transcript": "./src/fetch-transcript.mjs"
+  },
   "exports": {
     ".": {
       "types": "./src/index.d.ts",
@@ -26,16 +29,17 @@
     "changeset:status": "changeset status --since=origin/main"
   },
   "keywords": [
-    "template",
-    "javascript",
-    "typescript",
-    "ai-driven"
+    "youtube",
+    "transcript",
+    "cli",
+    "playwright",
+    "markdown"
   ],
   "author": "",
   "license": "Unlicense",
   "repository": {
     "type": "git",
-    "url": "https://github.com/link-foundation/js-ai-driven-development-pipeline-template"
+    "url": "https://github.com/konard/fetch-youtube-transcript"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -61,5 +65,10 @@
       "prettier --write",
       "prettier --check"
     ]
+  },
+  "dependencies": {
+    "browser-commander": "^0.5.4",
+    "lino-arguments": "^0.2.5",
+    "playwright": "^1.58.2"
   }
 }
